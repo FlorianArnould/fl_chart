@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 import 'samples/line_chart_sample1.dart';
@@ -11,7 +14,7 @@ class LineChartPage extends StatelessWidget {
     return Container(
       color: const Color(0xff262545),
       child: ListView(
-        children: const <Widget>[
+        children: <Widget>[
           Align(
             alignment: Alignment.centerLeft,
             child: Padding(
@@ -49,6 +52,31 @@ class LineChartPage extends StatelessWidget {
             child: LineChartSample2(),
           ),
           SizedBox(height: 22),
+          Padding(
+            padding: EdgeInsets.all(28),
+            child: Stack(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                  ),
+                  width: 250,
+                  height: 250,
+                  child: GaugeChart(
+                    GaugeChartData(
+                      value: 0.7,
+                      valueColor: Colors.yellow,
+                      backgroundColor: Colors.orange,
+                      strokeWidth: 30,
+                      startAngle: -90,
+                      endAngle: 270,
+                      strokeCap: StrokeCap.round,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );
