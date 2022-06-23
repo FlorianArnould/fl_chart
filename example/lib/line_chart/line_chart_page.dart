@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +13,7 @@ class LineChartPage extends StatelessWidget {
       color: const Color(0xff262545),
       child: ListView(
         children: <Widget>[
-          Align(
+          const Align(
             alignment: Alignment.centerLeft,
             child: Padding(
               padding: EdgeInsets.only(
@@ -34,43 +32,53 @@ class LineChartPage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(
               left: 28,
               right: 28,
             ),
             child: LineChartSample1(),
           ),
-          SizedBox(
+          const SizedBox(
             height: 22,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 28.0, right: 28),
             child: LineChartSample2(),
           ),
-          SizedBox(height: 22),
+          const SizedBox(height: 22),
           Padding(
-            padding: EdgeInsets.all(28),
+            padding: const EdgeInsets.all(28),
             child: Stack(
               children: [
                 Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                   ),
                   width: 250,
                   height: 250,
                   child: GaugeChart(
                     GaugeChartData(
-                      value: 0.7,
-                      valueColor: Colors.yellow,
+                      value: 0.2,
+                      valueColor: VariableGaugeColor(
+                        colors: [Colors.yellow, Colors.blue, Colors.red],
+                        limits: [0.35, 0.5],
+                      ),
                       backgroundColor: Colors.orange,
                       strokeWidth: 30,
-                      startAngle: -90,
-                      endAngle: 270,
+                      startAngle: 45,
+                      endAngle: -225,
                       strokeCap: StrokeCap.round,
+                      ticks: const GaugeTicks(
+                        count: 11,
+                        color: Colors.grey,
+                        radius: 5,
+                        position: GaugeTickPosition.inner,
+                        margin: 5,
+                      ),
                     ),
                   ),
                 ),
